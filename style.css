@@ -1,4 +1,4 @@
-/*
+﻿/*
   Theme colors — change these to re-skin the whole site.
   --primary/--secondary form the gradient used on headings, buttons, and dots.
   --accent/--accent-2 are used sparingly for highlights (eyebrow text, tags, bars).
@@ -25,7 +25,12 @@
   */
   --section-y: clamp(44px, 6vw, 68px);
   --section-x: 24px;
-  --head-gap: clamp(28px, 3.5vw, 44px);
+  /* Space between a section's heading block and its content. Kept tight: the
+     heading and what follows are one unit, and the section padding above
+     already separates them from the previous section. */
+  --head-gap: clamp(18px, 2.2vw, 28px);
+  /* Shared gap for the card grids, so Skills, Languages and Projects match. */
+  --grid-gap: 24px;
 }
 
 * { box-sizing: border-box; }
@@ -237,23 +242,27 @@ ul { list-style: none; }
   font-weight: 700;
   letter-spacing: 1px;
   text-transform: uppercase;
-  margin-bottom: 14px;
+  margin-bottom: 10px;
 }
 .section-head h2 {
   font-size: clamp(1.8rem, 4vw, 2.6rem);
   margin: 0;
 }
 
-/* About — bio paragraph on top, personal-details cards in a grid below it */
+/* About — bio paragraph on top, the work-permit card below it */
 .about-grid {
   display: flex;
   flex-direction: column;
-  gap: 36px;
+  gap: 24px;
 }
 .about-text {
   color: var(--text-dim);
   font-size: 1.05rem;
   line-height: 1.8;
+  /* A paragraph's default 1em margin stacked on top of --head-gap and made
+     the heading-to-text gap noticeably larger here than in other sections.
+     The parent uses gap for spacing, so no margin is wanted at all. */
+  margin: 0;
 }
 .info-grid {
   display: grid;
@@ -295,7 +304,7 @@ ul { list-style: none; }
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 24px;
+  gap: var(--grid-gap);
 }
 .skill-card {
   background: var(--card);
@@ -363,7 +372,7 @@ ul { list-style: none; }
 .languages-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 22px;
+  gap: var(--grid-gap);
 }
 .language-item {
   background: var(--card);
@@ -397,7 +406,7 @@ ul { list-style: none; }
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 28px;
+  gap: var(--grid-gap);
 }
 .project-card {
   background: var(--card);
@@ -455,7 +464,7 @@ ul { list-style: none; }
 /* Contact — direct details + message form (submits via the relay set in content.js) */
 .contact-wrap {
   display: flex;
-  gap: 50px;
+  gap: clamp(32px, 4vw, 48px);
   flex-wrap: wrap;
 }
 .contact-info {

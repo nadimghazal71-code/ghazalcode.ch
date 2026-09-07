@@ -21,15 +21,17 @@ const CONTENT = {
     tag: "About",
     heading: "A little about me",
     bio: "React developer with a bachelor's degree in computer science and hands-on experience delivering front-end applications for the banking, fintech, and real estate automation sectors. Previous professional experience at Lyst Technologies includes building and testing front-end interfaces for banking clients and designing complex BIRT data reports. Based in Zurich with Swiss work permit and immediately available.",
-    // Work permit deliberately comes first: it answers a Swiss recruiter's
-    // very first question before they have to ask it.
+    /*
+      Only the work permit is shown. Nationality, civil status and date of
+      birth are personal data that a public page has no reason to publish, and
+      contact details already live in the Contact section. The permit stays
+      because it answers a Swiss recruiter's first question before they ask it.
+
+      A `value` given as an array renders one line per entry (script.js
+      renderAbout); `highlight: true` gives the card the full-width treatment.
+    */
     info: [
-      { label: "Work Permit", value: "B Permit — no sponsorship required", highlight: true },
-      { label: "Nationality", value: "Lebanese" },
-      { label: "Civil Status", value: "Married" },
-      { label: "Birth Date", value: "19th October 1998" },
-      // value as an array renders each entry on its own line (see script.js renderAbout)
-      { label: "Contact", value: ["nadimghazal71@gmail.com", "+41 76 794 85 18"] }
+      { label: "Work Permit", value: "B Permit — no sponsorship required", highlight: true }
     ]
   },
 
