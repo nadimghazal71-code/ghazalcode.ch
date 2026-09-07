@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>A2 Deutsch Vokabeln</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div id="app">
+
+  <!-- HOME -->
+  <section id="screen-home" class="screen">
+    <header class="app-header">
+      <h1>A2 Deutsch Vokabeln</h1>
+      <p class="subtitle">Goethe-Zertifikat A2 · 606 Wörter</p>
+    </header>
+
+    <div class="stats-card">
+      <div class="stats-row">
+        <div class="stat">
+          <div class="stat-num" id="stat-mastered">0</div>
+          <div class="stat-label">Level 5</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num" id="stat-progress">0</div>
+          <div class="stat-label">in Bearbeitung</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num" id="stat-new">606</div>
+          <div class="stat-label">neu</div>
+        </div>
+      </div>
+      <div class="level-bar" id="level-bar"></div>
+    </div>
+
+    <div class="home-actions">
+      <button class="btn btn-primary btn-large" id="btn-goto-study">
+        <span class="btn-emoji">🎯</span>
+        <span>Study</span>
+      </button>
+      <button class="btn btn-secondary btn-large" id="btn-goto-flashcards">
+        <span class="btn-emoji">📚</span>
+        <span>Flashcards</span>
+      </button>
+    </div>
+
+    <button class="btn-link" id="btn-reset-progress">Fortschritt zurücksetzen</button>
+  </section>
+
+  <!-- STUDY SETUP -->
+  <section id="screen-study-setup" class="screen hidden">
+    <header class="sub-header">
+      <button class="btn-back" data-nav="home">&larr;</button>
+      <h2>Study</h2>
+    </header>
+
+    <div class="setup-group">
+      <h3>Länge</h3>
+      <div class="option-row">
+        <button class="option-btn" data-length="10">Kurz (10)</button>
+        <button class="option-btn" data-length="20">Lang (20)</button>
+      </div>
+    </div>
+
+    <div class="setup-group">
+      <h3>Richtung</h3>
+      <div class="option-row">
+        <button class="option-btn" data-direction="en-de">English → Deutsch</button>
+        <button class="option-btn" data-direction="de-en">Deutsch → English</button>
+      </div>
+    </div>
+
+    <button class="btn btn-primary btn-large" id="btn-start-study" disabled>Start</button>
+  </section>
+
+  <!-- FLASHCARDS SETUP -->
+  <section id="screen-flash-setup" class="screen hidden">
+    <header class="sub-header">
+      <button class="btn-back" data-nav="home">&larr;</button>
+      <h2>Flashcards</h2>
+    </header>
+
+    <div class="setup-group">
+      <h3>Richtung</h3>
+      <div class="option-row">
+        <button class="option-btn" data-direction="en-de">English → Deutsch</button>
+        <button class="option-btn" data-direction="de-en">Deutsch → English</button>
+      </div>
+    </div>
+
+    <div class="setup-group">
+      <h3>Reihenfolge</h3>
+      <div class="option-row">
+        <button class="option-btn" data-order="shuffle">Zufällig</button>
+        <button class="option-btn" data-order="az">A–Z</button>
+      </div>
+    </div>
+
+    <button class="btn btn-primary btn-large" id="btn-start-flash" disabled>Start</button>
+  </section>
+
+  <!-- SESSION -->
+  <section id="screen-session" class="screen hidden">
+    <header class="session-header">
+      <button class="btn-back" data-nav="exit-session">&larr;</button>
+      <div class="session-progress">
+        <div class="session-progress-bar"><div class="session-progress-fill" id="session-progress-fill"></div></div>
+        <div class="session-progress-text" id="session-progress-text">1 / 10</div>
+      </div>
+      <div class="session-spacer"></div>
+    </header>
+
+    <div class="card-area">
+      <div class="card" id="card">
+        <div class="card-type-badge" id="card-type-badge"></div>
+        <div class="card-front" id="card-front"></div>
+        <div class="card-back hidden" id="card-back">
+          <div class="card-divider"></div>
+          <div class="answer-feedback" id="answer-feedback"></div>
+          <div class="card-back-text" id="card-back-text"></div>
+          <div class="card-partizip" id="card-partizip"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="answer-area" id="answer-area">
+      <input type="text" id="answer-input" placeholder="Antwort eingeben…" autocomplete="off" autocapitalize="off" spellcheck="false" />
+      <div class="answer-buttons">
+        <button class="btn btn-primary" id="btn-show">Zeig mir&#39;s</button>
+        <button class="btn btn-secondary" id="btn-check">Prüfen</button>
+      </div>
+    </div>
+
+    <div class="reveal-area hidden" id="reveal-area">
+      <button class="btn btn-primary btn-large" id="btn-reveal">Aufdecken</button>
+    </div>
+
+    <div class="rate-area hidden" id="rate-area">
+      <p class="rate-label">Wie gut wusstest du das?</p>
+      <div class="rate-buttons">
+        <button class="rate-btn rate-1" data-level="1">1<span>gar nicht</span></button>
+        <button class="rate-btn rate-2" data-level="2">2<span>kaum</span></button>
+        <button class="rate-btn rate-3" data-level="3">3<span>teilweise</span></button>
+        <button class="rate-btn rate-4" data-level="4">4<span>gut</span></button>
+        <button class="rate-btn rate-5" data-level="5">5<span>perfekt</span></button>
+      </div>
+    </div>
+
+    <div class="browse-area hidden" id="browse-area">
+      <button class="btn btn-secondary" id="btn-prev">&larr; Zurück</button>
+      <button class="btn btn-primary" id="btn-next">Weiter &rarr;</button>
+    </div>
+  </section>
+
+  <!-- SUMMARY -->
+  <section id="screen-summary" class="screen hidden">
+    <header class="app-header">
+      <h1>Fertig! 🎉</h1>
+    </header>
+    <div class="stats-card">
+      <p class="summary-line" id="summary-line"></p>
+      <div class="level-bar" id="summary-level-bar"></div>
+    </div>
+    <div class="home-actions">
+      <button class="btn btn-primary btn-large" id="btn-study-again">Nochmal Study</button>
+      <button class="btn btn-secondary btn-large" data-nav="home">Zur Startseite</button>
+    </div>
+  </section>
+
+</div>
+
+<script src="vocab-data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

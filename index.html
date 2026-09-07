@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Nadim Ghazal — React Developer in Zurich</title>
+<meta name="description" content="React developer based in Zurich with a computer science degree and a Swiss B permit, building front-end applications for banking and fintech. Portfolio, CV and projects.">
+<meta name="author" content="Nadim Ghazal">
+<link rel="canonical" href="https://ghazalcode.ch/">
+<meta name="theme-color" content="#0f1020">
+
+<!-- Link previews on LinkedIn, WhatsApp, Slack and X -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Nadim Ghazal">
+<meta property="og:url" content="https://ghazalcode.ch/">
+<meta property="og:title" content="Nadim Ghazal — React Developer in Zurich">
+<meta property="og:description" content="Front-end applications for banking and fintech. Swiss B permit, based in Zurich, immediately available.">
+<meta property="og:image" content="https://ghazalcode.ch/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Nadim Ghazal — React Developer, Zurich">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Soft glowing background shapes, purely decorative (styled in style.css) -->
+<div class="blob blob-1"></div>
+<div class="blob blob-2"></div>
+<div class="blob blob-3"></div>
+
+<!-- Top navigation bar: logo + section links (links are filled in by script.js from content.js) -->
+<header class="navbar">
+  <div class="nav-inner">
+    <a href="#top" class="logo">NG<span>.</span></a>
+    <nav class="nav-links" id="navLinks"></nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">☰</button>
+  </div>
+</header>
+
+<main>
+
+  <!--
+    All the empty elements below (id="...") are text/content placeholders.
+    Their actual wording lives in content.js — script.js reads that file
+    and fills these elements in when the page loads. To change any text
+    on the site, edit content.js, not this file. IDs must stay in sync
+    with the ones referenced in script.js.
+  -->
+
+  <!-- Hero: name, tagline, CTA buttons, contact icons -->
+  <section id="top" class="hero">
+    <div class="hero-content">
+      <p class="eyebrow" id="heroEyebrow"></p>
+      <h1 id="heroName">Nadim Ghazal</h1>
+      <h2 class="role" id="heroRole"></h2>
+      <p class="hero-text" id="heroTagline"></p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-primary" id="heroContactBtn"></a>
+        <a href="assets/CV_Ghazal_Nadim.pdf" class="btn btn-outline" id="heroCvBtn" download></a>
+      </div>
+      <div class="socials">
+        <a href="mailto:nadimghazal71@gmail.com" aria-label="Email">✉️</a>
+        <a href="tel:+41767948518" aria-label="Phone">📞</a>
+        <a href="https://www.linkedin.com/in/nadim-ghazal-06484425b/" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="avatar-frame">
+        <div class="avatar-placeholder">NG</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About: bio paragraph + personal details grid (nationality, address, contact, etc.) -->
+  <section id="about" class="section">
+    <div class="section-head">
+      <span class="tag" id="aboutTag"></span>
+      <h2 id="aboutHeading"></h2>
+    </div>
+    <div class="about-grid">
+      <p class="about-text" id="aboutBio"></p>
+      <div class="info-grid" id="aboutInfo"></div>
+    </div>
+  </section>
+
+  <!-- Skills: category cards (Frontend, Reporting, Backend/DB, Tools) -->
+  <section id="skills" class="section">
+    <div class="section-head">
+      <span class="tag" id="skillsTag"></span>
+      <h2 id="skillsHeading"></h2>
+    </div>
+    <div class="skills-grid" id="skillsGrid"></div>
+  </section>
+
+  <!-- Languages: spoken languages with proficiency bars -->
+  <section id="languages" class="section">
+    <div class="section-head">
+      <span class="tag" id="languagesTag"></span>
+      <h2 id="languagesHeading"></h2>
+    </div>
+    <div class="languages-grid" id="languagesGrid"></div>
+  </section>
+
+  <!-- Experience: work history timeline -->
+  <section id="experience" class="section">
+    <div class="section-head">
+      <span class="tag" id="experienceTag"></span>
+      <h2 id="experienceHeading"></h2>
+    </div>
+    <div class="timeline" id="experienceTimeline"></div>
+  </section>
+
+  <!-- Education: degrees / certificates timeline -->
+  <section id="education" class="section">
+    <div class="section-head">
+      <span class="tag" id="educationTag"></span>
+      <h2 id="educationHeading"></h2>
+    </div>
+    <div class="timeline" id="educationTimeline"></div>
+  </section>
+
+  <!-- Projects: cards are built from CONTENT.projects.items in content.js -->
+  <section id="projects" class="section">
+    <div class="section-head">
+      <span class="tag" id="projectsTag"></span>
+      <h2 id="projectsHeading"></h2>
+    </div>
+    <div class="projects-grid" id="projectsGrid"></div>
+  </section>
+
+  <!-- Contact: direct details (email/phone/location) + a message form that posts to the relay configured in content.js -->
+  <section id="contact" class="section contact-section">
+    <div class="section-head">
+      <span class="tag" id="contactTag"></span>
+      <h2 id="contactHeading"></h2>
+    </div>
+    <div class="contact-wrap">
+      <div class="contact-info">
+        <p class="contact-text" id="contactText"></p>
+        <ul class="contact-details" id="contactDetails"></ul>
+        <p class="contact-refs" id="contactRefs"></p>
+      </div>
+      <form class="contact-form" id="contactForm">
+        <div class="form-row">
+          <input type="text" name="name" id="formName" required>
+          <input type="email" name="email" id="formEmail" required>
+        </div>
+        <textarea name="message" id="formMessage" rows="5" required></textarea>
+        <!-- Spam trap: hidden from people, irresistible to bots. Handled in script.js. -->
+        <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" class="honeypot">
+        <button type="submit" class="btn btn-primary" id="formSubmit"></button>
+        <p class="form-note" id="formNote" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <p id="footerText"></p>
+</footer>
+
+<!-- content.js holds all the site's text; script.js renders it into the page and handles interactions -->
+<script src="content.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
