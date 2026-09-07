@@ -13,8 +13,7 @@ const CONTENT = {
     eyebrow: "Hello, I'm",
     role: "React Developer | Frontend Engineer | Fintech Specialist",
     tagline: "React developer with a bachelor's degree in computer science and hands-on experience delivering front-end applications for banking, fintech, and real estate automation. Based in Zurich with a Swiss work permit and immediately available.",
-    contactBtn: "Get in Touch",
-    cvBtn: "Download CV"
+    contactBtn: "Get in Touch"
   },
 
   // Bio paragraph + the personal-details grid (Nationality, Civil Status, etc.)
@@ -128,6 +127,8 @@ const CONTENT = {
         title: "Swiss QR-Bill Studio",
         description: "A generator, validator and decoder for the Swiss QR-bill — the payment slip on every Swiss invoice since 2020. Implements the SIX Implementation Guidelines v2.3: IBAN validation, the Modulo 10 recursive check digit, ISO 11649 creditor references, and the full Swiss Payments Code, with the slip rendered at true 210 × 105 mm for print.",
         tags: ["React", "TypeScript", "Vite", "Swiss Payment Standards"],
+        image: "assets/project-qr-bill.png",
+        imageAlt: "A Swiss QR-bill payment slip with its QR code and Swiss cross",
         demo: "projects/qr-bill/",
         repo: "https://github.com/nadimghazal71-code/swiss-qr-bill-studio"
       },
@@ -135,6 +136,8 @@ const CONTENT = {
         title: "A2 Deutsch Trainer",
         description: "A vocabulary trainer built around the Goethe A2 word list, made while studying for the exam myself. Runs as a web app and as a React Native mobile app with an installable Android build.",
         tags: ["JavaScript", "React Native", "Expo"],
+        image: "assets/project-deutsch.png",
+        imageAlt: "A vocabulary flashcard reading 'die Ausbildung' with its level progress dots",
         demo: "projects/deutsch/",
         repo: "https://github.com/nadimghazal71-code/a2-deutsch-app"
       }

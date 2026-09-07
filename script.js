@@ -35,8 +35,6 @@ function renderHero() {
   document.getElementById("heroRole").textContent = c.hero.role;
   document.getElementById("heroTagline").textContent = c.hero.tagline;
   document.getElementById("heroContactBtn").textContent = c.hero.contactBtn;
-  const cvBtn = document.getElementById("heroCvBtn");
-  cvBtn.textContent = c.hero.cvBtn;
 }
 
 function renderAbout() {
@@ -108,10 +106,13 @@ function renderProjects() {
   document.getElementById("projectsTag").textContent = c.tag;
   document.getElementById("projectsHeading").textContent = c.heading;
   document.getElementById("projectsGrid").innerHTML = c.items
-    // cycles through thumb-1/2/3 background gradients so cards don't all look identical
+    // With no image, the card falls back to one of the thumb-1/2/3 gradients
+    // so it still looks deliberate rather than empty.
     .map((p, i) => `
       <div class="project-card">
-        <div class="project-thumb thumb-${(i % 3) + 1}"></div>
+        <div class="project-thumb${p.image ? "" : ` thumb-${(i % 3) + 1}`}">
+          ${p.image ? `<img src="${p.image}" alt="${p.imageAlt || ""}" loading="lazy" width="760" height="320">` : ""}
+        </div>
         <div class="project-body">
           <h3>${p.title}</h3>
           <p>${p.description}</p>
@@ -119,7 +120,7 @@ function renderProjects() {
             ? `<ul class="project-tags">${p.tags.map(t => `<li>${t}</li>`).join("")}</ul>`
             : ""}
           <div class="project-links">
-            ${p.demo ? `<a href="${p.demo}" class="project-link project-link--demo">Live demo →</a>` : ""}
+            ${p.demo ? `<a href="${p.demo}" class="project-link project-link--demo" target="_blank" rel="noopener">Live demo ↗</a>` : ""}
             ${p.repo ? `<a href="${p.repo}" class="project-link" target="_blank" rel="noopener">Code on GitHub ↗</a>` : ""}
           </div>
         </div>

@@ -395,7 +395,15 @@ ul { list-style: none; }
   transform: translateY(-8px);
   box-shadow: var(--shadow);
 }
-.project-thumb { height: 160px; }
+.project-thumb { height: 160px; overflow: hidden; background: var(--bg-soft); }
+.project-thumb img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.35s ease;
+}
+.project-card:hover .project-thumb img { transform: scale(1.04); }
 .thumb-1 { background: linear-gradient(135deg, var(--primary), var(--secondary)); }
 .thumb-2 { background: linear-gradient(135deg, var(--accent), var(--primary)); }
 .thumb-3 { background: linear-gradient(135deg, var(--accent-2), var(--secondary)); }
