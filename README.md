@@ -42,7 +42,7 @@ served from this same domain:
 
 | Path | Source repo |
 | --- | --- |
-| `projects/qr-bill/` | [swiss-qr-bill-studio](https://github.com/nadimghazal71-code/swiss-qr-bill-studio) — `npm run build`, then copy `dist/` here |
+| `projects/qr-bill/` | [swiss-qr-bill-studio](https://github.com/nadimghazal71-code/swiss-qr-bill-studio) — `npm run build`, then copy `packages/web/dist/` here |
 | `projects/deutsch/` | [a2-deutsch-app](https://github.com/nadimghazal71-code/a2-deutsch-app) — copy `index.html`, `app.js`, `style.css`, `vocab-data.js` |
 
 ## Deploying
