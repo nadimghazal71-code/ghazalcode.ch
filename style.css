@@ -16,6 +16,16 @@
   --radius: 18px;
   --max-width: 1100px;
   --shadow: 0 10px 30px rgba(0,0,0,0.35);
+
+  /*
+    Vertical rhythm. --section-y is the padding on each side of a section, so
+    the gap a reader actually sees between two sections is twice this value:
+    about 88px on a phone rising to 136px on a wide screen. It scales with the
+    viewport, which is why no breakpoint has to override it.
+  */
+  --section-y: clamp(44px, 6vw, 68px);
+  --section-x: 24px;
+  --head-gap: clamp(28px, 3.5vw, 44px);
 }
 
 * { box-sizing: border-box; }
@@ -93,14 +103,18 @@ ul { list-style: none; }
 .hero {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 80px 24px 60px;
+  /* Bottom padding matches --section-y so the hero-to-About gap is identical
+     to every section-to-section gap below it. */
+  padding: clamp(64px, 7vw, 96px) var(--section-x) var(--section-y);
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 40px;
   position: relative;
   z-index: 1;
-  min-height: 70vh;
+  /* No min-height: it centred the content inside a 70vh box and left ~150px
+     of slack, making the hero-to-About gap twice every other gap. The hero's
+     height now comes from its content and padding, like every section. */
 }
 .hero-content { flex: 1; max-width: 600px; }
 .eyebrow {
@@ -190,28 +204,29 @@ ul { list-style: none; }
   background: linear-gradient(135deg, var(--primary), var(--secondary));
   padding: 6px;
   box-shadow: var(--shadow);
-  transform: rotate(4deg);
+  /* The tile used to be an abstract "NG" monogram, where a 4deg tilt read as
+     playful. With a real headshot it reads as crooked, so it sits straight.
+     Restore with: transform: rotate(4deg); */
+  overflow: hidden;
 }
-.avatar-placeholder {
+.avatar-frame picture { display: block; height: 100%; }
+.avatar-photo {
   width: 100%;
   height: 100%;
-  background: var(--bg-soft);
+  object-fit: cover;
   border-radius: 34px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 4rem;
+  display: block;
 }
 
 /* Shared layout for every content section (About, Skills, Languages, etc.) */
 .section {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 90px 24px;
+  padding: var(--section-y) var(--section-x);
   position: relative;
   z-index: 1;
 }
-.section-head { margin-bottom: 48px; }
+.section-head { margin-bottom: var(--head-gap); }
 .tag {
   display: inline-block;
   background: var(--card);
@@ -549,7 +564,9 @@ ul { list-style: none; }
 /* Footer */
 .footer {
   text-align: center;
-  padding: 30px 24px 40px;
+  padding: clamp(28px, 4vw, 40px) var(--section-x);
+  margin-top: var(--section-y);
+  border-top: 1px solid rgba(255,255,255,0.06);
   color: var(--text-dim);
   font-size: 0.85rem;
   position: relative;

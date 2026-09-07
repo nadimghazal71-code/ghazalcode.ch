@@ -94,7 +94,12 @@
     </div>
     <div class="hero-visual">
       <div class="avatar-frame">
-        <div class="avatar-placeholder">NG</div>
+        <!-- WebP for browsers that take it (16 KB), JPEG fallback (26 KB) -->
+        <picture>
+          <source srcset="assets/photo-nadim.webp" type="image/webp">
+          <img src="assets/photo-nadim.jpg" alt="Nadim Ghazal" class="avatar-photo"
+               width="520" height="520" fetchpriority="high">
+        </picture>
       </div>
     </div>
   </section>
