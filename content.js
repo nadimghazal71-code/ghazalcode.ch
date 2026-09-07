@@ -154,7 +154,7 @@ const CONTENT = {
     details: [
       { label: "Email", value: "nadimghazal71@gmail.com", href: "mailto:nadimghazal71@gmail.com" },
       { label: "Phone", value: "+41 76 794 85 18", href: "tel:+41767948518" },
-      { label: "Location", value: "Wohlenschwil" }
+      { label: "Location", value: "Zurich" }
     ],
     refs: "References upon request",
     form: {

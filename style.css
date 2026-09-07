@@ -599,11 +599,41 @@ ul { list-style: none; }
     gap: 18px;
     border-bottom: 1px solid rgba(255,255,255,0.08);
   }
-  .hero { flex-direction: column; text-align: center; padding-top: 50px; }
+  /*
+    On a phone the hero has to fit one screen, photo included — otherwise the
+    portrait is cut in half on landing. Everything below is tightened just
+    enough to bring the photo above the fold on a 393x730 viewport.
+  */
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    padding-top: 16px;
+    gap: 16px;
+  }
   .hero-actions, .socials { justify-content: center; }
-  .avatar-frame { width: 200px; height: 200px; }
+  .eyebrow { margin-bottom: 8px; }
+  .role { margin: 6px 0 10px; }
+  .hero-text { font-size: 1rem; margin-bottom: 16px; }
+  .hero-actions { margin-bottom: 16px; }
+  .avatar-frame { width: 140px; height: 140px; border-radius: 30px; }
+  .avatar-photo { border-radius: 26px; }
   .contact-details li { flex-direction: column; align-items: flex-start; text-align: left; }
   .info-grid { grid-template-columns: 1fr; }
+}
+
+/*
+  Short phone screens (iPhone SE, older Androids). The limiting dimension here
+  is height, not width, so this keys off height: the hero is compressed a
+  little further only where it actually has to be, leaving taller phones with
+  the roomier layout above.
+*/
+@media (max-width: 820px) and (max-height: 700px) {
+  .hero { gap: 12px; padding-top: 12px; }
+  .hero-text { font-size: 0.94rem; line-height: 1.55; margin-bottom: 12px; }
+  .hero-actions { margin-bottom: 12px; }
+  .role { margin: 4px 0 8px; }
+  .avatar-frame { width: 118px; height: 118px; border-radius: 26px; }
+  .avatar-photo { border-radius: 22px; }
 }
 
 @media (min-width: 821px) and (max-width: 1000px) {
