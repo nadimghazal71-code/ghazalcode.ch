@@ -51,6 +51,13 @@ Push to `main`. GitHub Pages publishes from the repository root; `CNAME` holds
 the custom domain and `.nojekyll` stops Pages from running the files through
 Jekyll.
 
+**After changing `style.css`, `content.js` or `script.js`, bump the `?v=`
+token on all three `<link>`/`<script>` tags in `index.html`.** GitHub Pages
+serves those files with `Cache-Control: max-age=600`, so without a new token a
+returning visitor keeps the old copy for ten minutes and it looks as though
+the deploy did nothing. Any changing string works — the date plus a letter is
+enough.
+
 ## Local preview
 
 Any static server works, for example:
