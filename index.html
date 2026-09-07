@@ -26,9 +26,28 @@
 <link rel="icon" href="assets/favicon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<!--
+  Content Security Policy. Delivered as a meta tag because GitHub Pages does
+  not allow custom response headers. Everything the page needs is served from
+  this origin; the only outbound connection is the contact form's relay.
+  Note: frame-ancestors cannot be set via meta, so clickjacking protection
+  would need real headers (i.e. a different host or a proxy in front).
+-->
+<meta http-equiv="Content-Security-Policy" content="
+  default-src 'self';
+  base-uri 'none';
+  object-src 'none';
+  script-src 'self';
+  style-src 'self';
+  font-src 'self';
+  img-src 'self' data:;
+  connect-src 'self' https://formsubmit.co;
+  form-action 'self' https://formsubmit.co;
+  upgrade-insecure-requests;
+">
+
+<!-- Poppins is self-hosted: see assets/fonts/poppins.css for why -->
+<link rel="stylesheet" href="assets/fonts/poppins.css">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>

@@ -540,6 +540,12 @@ ul { list-style: none; }
   pointer-events: none;
 }
 
+/* Scroll reveal — script.js sets the hidden state inline, then adds .in-view */
+.section.in-view {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
 /* Footer */
 .footer {
   text-align: center;

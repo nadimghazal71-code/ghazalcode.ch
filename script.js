@@ -76,9 +76,15 @@ function renderLanguages() {
           <span class="language-name">${item.name}</span>
           <span class="language-level">${item.level}</span>
         </div>
-        <div class="language-bar"><div class="language-fill" style="width:${item.pct}%"></div></div>
+        <div class="language-bar"><div class="language-fill" data-pct="${item.pct}"></div></div>
       </div>
     `).join("");
+
+  // The width is applied here rather than as a style="" attribute: the Content
+  // Security Policy blocks inline styles, but CSSOM assignment is permitted.
+  document.querySelectorAll("#languagesGrid .language-fill").forEach(fill => {
+    fill.style.width = `${fill.dataset.pct}%`;
+  });
 }
 
 // Shared by both Experience and Education — they use the same timeline markup,
@@ -231,13 +237,12 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.15 });
 
+// Setting .style properties is CSSOM, which the Content Security Policy allows.
+// The matching .in-view rule lives in style.css — injecting a <style> element
+// here would count as an inline stylesheet and be blocked by style-src.
 document.querySelectorAll(".section").forEach(sec => {
   sec.style.opacity = 0;
   sec.style.transform = "translateY(24px)";
   sec.style.transition = "opacity 0.7s ease, transform 0.7s ease";
   observer.observe(sec);
 });
-
-const style = document.createElement("style");
-style.textContent = `.section.in-view { opacity: 1 !important; transform: translateY(0) !important; }`;
-document.head.appendChild(style);
