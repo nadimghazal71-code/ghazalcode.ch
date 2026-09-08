@@ -67,8 +67,19 @@
     <header class="sub-header">
       <button class="btn-back" data-nav="home">&larr;</button>
       <h2>Flashcards</h2>
-      <span class="level-chip"></span>
+      <span class="level-chip" id="flash-level-chip"></span>
     </header>
+
+    <!-- Flashcards pick their own level, independently of the home selection:
+         flicking through the other level shouldn't change what Study is on.
+         Labels are filled in by app.js so the word counts stay accurate. -->
+    <div class="setup-group">
+      <h3>Level</h3>
+      <div class="option-row" id="flash-level-row">
+        <button class="option-btn" data-level="A1"></button>
+        <button class="option-btn" data-level="A2"></button>
+      </div>
+    </div>
 
     <div class="setup-group">
       <h3>Richtung</h3>

@@ -136,7 +136,7 @@ const CONTENT = {
       },
       {
         title: "Deutsch Trainer — A1 & A2",
-        description: "A vocabulary trainer covering both Goethe word lists — 1,366 words across A1 and A2 — built while studying for the exams myself. Each level is a separate track with its own spaced-repetition schedule and progress. Runs as a web app and as a React Native mobile app with an installable Android build.",
+        description: "A vocabulary trainer covering both Goethe word lists — 1,366 words across A1 and A2 — built while studying for the exams myself. Each level is a separate track with its own spaced-repetition schedule and progress, on both the web app and the React Native build.",
         tags: ["JavaScript", "React Native", "Expo"],
         image: "assets/project-deutsch.png",
         imageAlt: "A vocabulary flashcard reading 'die Ausbildung' with its level progress dots",

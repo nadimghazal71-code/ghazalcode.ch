@@ -13,7 +13,7 @@ const LEVELS = {
   A2: {
     id: 'A2',
     label: 'A2',
-    name: 'Goethe-Zertifikat A2',
+    name: 'Start Deutsch A2',
     words: VOCAB_A2,
     storageKey: 'a2vocab_progress_v1',
   },
@@ -302,7 +302,9 @@ document.getElementById('btn-reset-progress').addEventListener('click', () => {
 
 // ---------- Setup screens ----------
 const studySelection = { length: null, direction: null };
-const flashSelection = { direction: null, order: null };
+// Flashcards carry their own level; it starts on whichever level is selected
+// at home but changing it here does not move the home selection.
+const flashSelection = { level: null, direction: null, order: null };
 
 function resetSetupSelection(which) {
   if (which === 'study') {
@@ -315,8 +317,24 @@ function resetSetupSelection(which) {
     flashSelection.order = null;
     document.querySelectorAll('#screen-flash-setup .option-btn').forEach(b => b.classList.remove('selected'));
     document.getElementById('btn-start-flash').disabled = true;
+    setFlashLevel(activeLevel);
   }
 }
+
+/** Selects a level on the Flashcards setup screen and relabels its buttons. */
+function setFlashLevel(id) {
+  flashSelection.level = id;
+  document.querySelectorAll('#flash-level-row [data-level]').forEach(btn => {
+    const lvl = LEVELS[btn.dataset.level];
+    btn.textContent = lvl.label + ' · ' + lvl.words.length;
+    btn.classList.toggle('selected', btn.dataset.level === id);
+  });
+  document.getElementById('flash-level-chip').textContent = LEVELS[id].label;
+}
+
+document.querySelectorAll('#flash-level-row [data-level]').forEach(btn => {
+  btn.addEventListener('click', () => setFlashLevel(btn.dataset.level));
+});
 
 document.querySelectorAll('#screen-study-setup [data-length]').forEach(btn => {
   btn.addEventListener('click', () => {
@@ -367,7 +385,7 @@ document.getElementById('btn-start-study').addEventListener('click', () => {
 });
 
 document.getElementById('btn-start-flash').addEventListener('click', () => {
-  startFlashSession(flashSelection.direction, flashSelection.order);
+  startFlashSession(flashSelection.level, flashSelection.direction, flashSelection.order);
 });
 
 // ---------- Session state ----------
@@ -418,8 +436,7 @@ function startStudySession(length, direction) {
   renderCard();
 }
 
-function startFlashSession(direction, order) {
-  const levelId = activeLevel;
+function startFlashSession(levelId, direction, order) {
   const list = words(levelId);
   let ids = list.map(e => e.id);
   if (order === 'shuffle') {
