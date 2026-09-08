@@ -116,6 +116,95 @@ html, body {
 .seg-4 { background: var(--l4); }
 .seg-5 { background: var(--l5); }
 
+/* Level chooser — one card per level, each with its own progress bar */
+.level-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.level-card {
+  display: block;
+  width: 100%;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px 18px;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  transition: border-color 0.15s ease, transform 0.1s ease;
+}
+.level-card:hover { border-color: var(--accent); }
+.level-card:active { transform: scale(0.995); }
+
+/* The selected level is the one Study and Flashcards will run on, so it is
+   marked with the accent rather than a subtle tint. */
+.level-card.selected {
+  border-color: var(--accent);
+  box-shadow: var(--shadow), inset 0 0 0 1px var(--accent);
+}
+
+.level-card-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.level-badge {
+  flex: none;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  padding: 4px 10px;
+  border-radius: 8px;
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+.level-card.selected .level-badge {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+.level-name { font-weight: 600; font-size: 0.95rem; }
+.level-total { margin-left: auto; font-size: 0.8rem; color: var(--ink-soft); white-space: nowrap; }
+
+.level-card-stats {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-top: 10px;
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+}
+.level-card-stats b { color: var(--ink); font-weight: 600; }
+.level-pct { margin-left: auto; font-weight: 700; color: var(--accent); font-size: 0.9rem; }
+
+/* Shows which level a setup or session screen belongs to */
+.level-chip {
+  flex: none;
+  margin-left: auto;
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  padding: 4px 9px;
+  border-radius: 8px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  min-width: 34px;
+  text-align: center;
+}
+
+@media (max-width: 380px) {
+  .level-card-stats { flex-wrap: wrap; gap: 8px; }
+  .level-pct { margin-left: 0; }
+}
+
+
 /* Buttons */
 .btn {
   border: none;
@@ -182,7 +271,6 @@ html, body {
 .session-progress-bar { height: 6px; background: var(--border); border-radius: 4px; overflow: hidden; margin-bottom: 6px; }
 .session-progress-fill { height: 100%; background: var(--accent); border-radius: 4px; transition: width 0.2s ease; }
 .session-progress-text { font-size: 0.78rem; color: var(--ink-soft); text-align: center; }
-.session-spacer { width: 40px; }
 
 /* Card */
 .card-area { flex: 1; display: flex; align-items: center; justify-content: center; min-height: 220px; margin-bottom: 20px; }

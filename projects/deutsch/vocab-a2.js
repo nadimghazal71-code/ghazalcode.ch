@@ -1,4 +1,4 @@
-const VOCAB = [
+const VOCAB_A2 = [
   {
     "id": 0,
     "word": "abschließen",

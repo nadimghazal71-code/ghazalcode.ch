@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>A2 Deutsch Vokabeln</title>
+<title>Deutsch Vokabeln · A1 & A2</title>
 <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -13,27 +13,13 @@
   <!-- HOME -->
   <section id="screen-home" class="screen">
     <header class="app-header">
-      <h1>A2 Deutsch Vokabeln</h1>
-      <p class="subtitle">Goethe-Zertifikat A2 · 606 Wörter</p>
+      <h1>Deutsch Vokabeln</h1>
+      <p class="subtitle">Wähle ein Level – jedes hat seinen eigenen Fortschritt</p>
     </header>
 
-    <div class="stats-card">
-      <div class="stats-row">
-        <div class="stat">
-          <div class="stat-num" id="stat-mastered">0</div>
-          <div class="stat-label">Level 5</div>
-        </div>
-        <div class="stat">
-          <div class="stat-num" id="stat-progress">0</div>
-          <div class="stat-label">in Bearbeitung</div>
-        </div>
-        <div class="stat">
-          <div class="stat-num" id="stat-new">606</div>
-          <div class="stat-label">neu</div>
-        </div>
-      </div>
-      <div class="level-bar" id="level-bar"></div>
-    </div>
+    <!-- One card per level, rendered by app.js renderHome(). Tapping one
+         selects it; Study and Flashcards then run on that level only. -->
+    <div class="level-list" id="level-list"></div>
 
     <div class="home-actions">
       <button class="btn btn-primary btn-large" id="btn-goto-study">
@@ -46,7 +32,7 @@
       </button>
     </div>
 
-    <button class="btn-link" id="btn-reset-progress">Fortschritt zurücksetzen</button>
+    <button class="btn-link" id="btn-reset-progress">Fortschritt dieses Levels zurücksetzen</button>
   </section>
 
   <!-- STUDY SETUP -->
@@ -54,6 +40,7 @@
     <header class="sub-header">
       <button class="btn-back" data-nav="home">&larr;</button>
       <h2>Study</h2>
+      <span class="level-chip"></span>
     </header>
 
     <div class="setup-group">
@@ -80,6 +67,7 @@
     <header class="sub-header">
       <button class="btn-back" data-nav="home">&larr;</button>
       <h2>Flashcards</h2>
+      <span class="level-chip"></span>
     </header>
 
     <div class="setup-group">
@@ -109,7 +97,7 @@
         <div class="session-progress-bar"><div class="session-progress-fill" id="session-progress-fill"></div></div>
         <div class="session-progress-text" id="session-progress-text">1 / 10</div>
       </div>
-      <div class="session-spacer"></div>
+      <span class="level-chip" id="session-level-chip"></span>
     </header>
 
     <div class="card-area">
@@ -171,7 +159,8 @@
 
 </div>
 
-<script src="vocab-data.js"></script>
+<script src="vocab-a1.js"></script>
+<script src="vocab-a2.js"></script>
 <script src="app.js"></script>
 </body>
 </html>

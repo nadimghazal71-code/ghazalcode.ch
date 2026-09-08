@@ -135,8 +135,8 @@ const CONTENT = {
         repo: "https://github.com/nadimghazal71-code/swiss-qr-bill-studio"
       },
       {
-        title: "A2 Deutsch Trainer",
-        description: "A vocabulary trainer built around the Goethe A2 word list, made while studying for the exam myself. Runs as a web app and as a React Native mobile app with an installable Android build.",
+        title: "Deutsch Trainer — A1 & A2",
+        description: "A vocabulary trainer covering both Goethe word lists — 1,366 words across A1 and A2 — built while studying for the exams myself. Each level is a separate track with its own spaced-repetition schedule and progress. Runs as a web app and as a React Native mobile app with an installable Android build.",
         tags: ["JavaScript", "React Native", "Expo"],
         image: "assets/project-deutsch.png",
         imageAlt: "A vocabulary flashcard reading 'die Ausbildung' with its level progress dots",
